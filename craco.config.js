@@ -21,4 +21,7 @@ module.exports = {
       },
     },
   },
+  babel: {
+    plugins: ['babel-plugin-redux-saga'],
+  },
 }
