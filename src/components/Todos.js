@@ -1,10 +1,12 @@
 import React from 'react'
-import { connect } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { saveTodo, deleteTodo, updateTodoCompleted } from '../actions/todos'
 
 import List from './List'
 
-const Todos = ({ dispatch, todos }) => {
+const Todos = () => {
+  const todos = useSelector((state) => state.todos)
+  const dispatch = useDispatch()
   const [value, setValue] = React.useState('')
   const addTodo = (e) => {
     e.preventDefault()
@@ -34,6 +36,4 @@ const Todos = ({ dispatch, todos }) => {
   )
 }
 
-export default connect((state) => ({
-  todos: state.todos,
-}))(Todos)
+export default Todos

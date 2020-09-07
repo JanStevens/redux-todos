@@ -1,10 +1,13 @@
 import React from 'react'
-import { connect } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { saveGoal, deleteGoal } from '../actions/goals'
 import List from './List'
 
-const Goals = ({ dispatch, goals }) => {
+const Goals = () => {
   const [value, setValue] = React.useState('')
+  const goals = useSelector((state) => state.goals)
+  const dispatch = useDispatch()
+
   const addItem = (e) => {
     e.preventDefault()
     dispatch(saveGoal(value, () => setValue('')))
@@ -30,4 +33,4 @@ const Goals = ({ dispatch, goals }) => {
   )
 }
 
-export default connect((state) => ({ goals: state.goals }))(Goals)
+export default Goals

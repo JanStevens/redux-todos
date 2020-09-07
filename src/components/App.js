@@ -1,11 +1,14 @@
 import React, { useEffect } from 'react'
-import { connect } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { requestData } from '../actions/shared'
 
 import Todos from './Todos'
 import Goals from './Goals'
 
-const App = ({ dispatch, loading }) => {
+const App = () => {
+  const loading = useSelector((state) => state.loading)
+  const dispatch = useDispatch()
+  
   useEffect(() => {
     dispatch(requestData())
   }, [dispatch])
@@ -22,4 +25,4 @@ const App = ({ dispatch, loading }) => {
   )
 }
 
-export default connect((state) => ({ loading: state.loading }))(App)
+export default App
